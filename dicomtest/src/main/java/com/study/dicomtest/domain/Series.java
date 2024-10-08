@@ -1,6 +1,4 @@
-package com.study.dicom.domain;
-
-import java.math.BigDecimal;
+package com.study.dicomtest.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,16 +14,18 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor  // 기본 생성자 자동 생성
+@IdClass(SeriesId.class)
 public class Series {
 
     
 
     @Id
     @Column(name = "SERIESKEY")
-    private BigDecimal seriesKey;
-
+    private Long seriesKey;
+    
+    @Id
     @Column(name = "STUDYKEY")
-    private BigDecimal studyKey;
+    private Long studyKey;
 
     @Column(name = "STUDYINSUID", nullable = false, length = 64)
     private String studyInsUid;
@@ -34,10 +34,10 @@ public class Series {
     private String seriesInsUid;
 
     @Column(name = "SERIESNUM")
-    private BigDecimal seriesNum;
+    private Long seriesNum;
 
     @Column(name = "SERIESCURSEQNUM")
-    private BigDecimal seriesCurSeqNum;
+    private Long seriesCurSeqNum;
 
     @Column(name = "STUDYID", length = 64)
     private String studyId;
@@ -61,19 +61,19 @@ public class Series {
     private String comments;
 
     @Column(name = "IMAGECNT")
-    private BigDecimal imageCnt;
+    private Long imageCnt;
 
     @Column(name = "MOVIECNT")
-    private BigDecimal movieCnt;
+    private Long movieCnt;
 
     @Column(name = "SERIESTYPE", length = 64)
     private String seriesType;
 
     @Column(name = "VERIFYFLAG")
-    private BigDecimal verifyFlag;
+    private Long verifyFlag;
 
     @Column(name = "DELFLAG")
-    private BigDecimal delFlag;
+    private Long delFlag;
 
     @Column(name = "SERIESDATE", length = 8)
     private String seriesDate;
@@ -88,7 +88,7 @@ public class Series {
     private String insertTime;
 
     @Column(name = "HOSPITALID", precision = 19, scale = 0)
-    private BigDecimal hospitalId;
+    private Long hospitalId;
 
     @Column(name = "PERFORMINGPHYSICIANNAME", length = 255)
     private String performingPhysicianName;
@@ -115,10 +115,10 @@ public class Series {
     private String manuModelName;
 
     @Column(name = "NONIMAGECOUNT")
-    private BigDecimal nonImageCount;
+    private Long nonImageCount;
 
     @Column(name = "FILESIZE")
-    private BigDecimal fileSize;
+    private Long fileSize;
 
     @Column(name = "INSERTED", length = 14)
     private String inserted;
@@ -127,13 +127,13 @@ public class Series {
     private String updated;
 
     @Column(name = "RESERVED1")
-    private BigDecimal reserved1;
+    private Long reserved1;
 
     @Column(name = "RESERVED2")
-    private BigDecimal reserved2;
+    private Long reserved2;
 
     @Column(name = "RESERVED3")
-    private BigDecimal reserved3;
+    private Long reserved3;
 
     @Column(name = "RESERVED4", length = 255)
     private String reserved4;
@@ -214,7 +214,7 @@ public class Series {
     private String viewPositionLong;
 
     @Column(name = "SERIES_KEY", precision = 19, scale = 2)
-    private BigDecimal seriesKeyLong;
+    private Long seriesKeyLong;
 
     @Column(name = "MANU_MODELNAME", length = 255)
     private String manuModelNameLong;

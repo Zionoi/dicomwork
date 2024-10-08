@@ -1,14 +1,14 @@
-package com.study.dicom.service;
+package com.study.dicomtest.service;
 import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.study.dicom.domain.Series;
-import com.study.dicom.domain.Study;
-import com.study.dicom.repository.SeriesRepository;
-import com.study.dicom.repository.StudyRepository;
+import com.study.dicomtest.domain.Series;
+import com.study.dicomtest.domain.Study;
+import com.study.dicomtest.repository.SeriesRepository;
+import com.study.dicomtest.repository.StudyRepository;
 
 @Service
 public class StudyService {
@@ -35,7 +35,7 @@ public class StudyService {
         studyRepository.deleteById(id);
     }
 
-    public List<Series> getSeriesByStudyKey(BigDecimal studyKey) {
+    public List<Series> getSeriesByStudyKey(Long studyKey) {
         return seriesRepository.findByStudyKey(studyKey);
     
 	}
