@@ -34,20 +34,7 @@
     </table>
 
     <script>
-        function loadImage(imagePath) {
-            const imageId = 'wadouri:http://localhost:8080/' + imagePath;
-            
-            // Enable the Cornerstone element
-            const element = document.getElementById('dicomImage');
-            cornerstone.enable(element);
-
-            // Load the image and display it
-            cornerstone.loadAndCacheImage(imageId).then(function(image) {
-                cornerstone.displayImage(element, image);
-            }).catch(function(err) {
-                console.log("Error loading image:", err);
-            });
-        }
+        
     </script>
 </body>
 </html>
