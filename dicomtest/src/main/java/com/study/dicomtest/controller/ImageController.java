@@ -62,6 +62,7 @@ public class ImageController {
         Resource resource = new UrlResource(filePath.toUri());
 
         System.out.println("생성된 파일 경로: " + filePath.toString()); // 경로 확인 로그
+        System.out.println("생성된 resource 파일 경로: " + resource); // 경로 확인 로그
 
         if (resource.exists() && resource.isReadable()) {
             // 파일이 존재하면 HTTP 응답으로 파일 제공
