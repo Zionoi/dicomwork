@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.study.dicomtest.domain.Series;
 import com.study.dicomtest.domain.Study;
@@ -27,6 +28,13 @@ public class StudyController {
         List<Study> studies = studyService.getAllStudies();
         model.addAttribute("studies", studies);  // 'studies' 이름으로 데이터를 모델에 추가
         return "studies";  // Thymeleaf 템플릿 이름 (study-list.html)
+    }
+    
+    @GetMapping("/studies/search")
+    public String searchStudies(@RequestParam("keyword") String keyword, Model model) {
+    	List<Study> studies = studyService.searchStudiesByKeyword(keyword);
+    	model.addAttribute("studies", studies);
+    	return "studies";
     }
     
     // 특정 Study에 속한 Series 목록을 전달

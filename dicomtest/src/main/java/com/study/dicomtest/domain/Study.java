@@ -53,7 +53,7 @@ public class Study {
     private String pid;
 
     @Column(name = "PNAME", length = 64)
-    private String pName;
+    private String PName;
 
     @Column(name = "PLASTNAME", length = 64)
     private String pLastName;

@@ -10,6 +10,14 @@
     </script>
 <body>
     <h1>Study 목록</h1>
+    <form th:action="@{/studies/search}" method="get">
+		<input type="text" name="keyword" placeholder="키워드 입력">
+		<button type="submit">검색</button>
+	</form>
+	<form th:action="@{/studies}" method="get" style="display: inline-block;">
+		<button type="submit">전체목록 보기</button>
+	</form>
+	
     <table border="1">
         <thead>
             <tr>

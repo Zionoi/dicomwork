@@ -39,4 +39,8 @@ public class StudyService {
         return seriesRepository.findByStudyKey(studyKey);
     
 	}
+
+	public List<Study> searchStudiesByKeyword(String keyword) {
+		return studyRepository.findByStudyDescContainingOrModalityContainingOrPNameContaining(keyword, keyword, keyword);
+	}
 }
