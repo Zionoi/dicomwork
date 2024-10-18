@@ -8,13 +8,14 @@ import java.util.List; // 리스트를 사용하기 위해 필요
 //import com.study.dicom.Image; // Image 엔티티 클래스 경로
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.study.finalProject.domain.Series;
@@ -32,22 +33,20 @@ public class StudyController {
     
     @GetMapping("/")
     public String home() {
-        return "index"; 
+        return "index";  // 인덱스 페이지
     }
     
-    @GetMapping("/loginPage")
-    public String home1() {
-        return "studyList"; 
-    }
     
-    @GetMapping("/studies")
+    
+    @GetMapping("/studyList")
     public String getAllStudies(Model model) {
         List<Study> studies = studyService.getAllStudies();
         model.addAttribute("studies", studies);  // 'studies' 이름으로 데이터를 모델에 추가
+        System.out.println("스터디리스트페이지 실행확인 studies :" + studies);
         return "studyList";  // Thymeleaf 템플릿 이름 (study-list.html)
     }
     
-    @GetMapping("/studies/search")
+    @GetMapping("/studyList/search")
     public String searchStudies(@RequestParam("keyword") String keyword, Model model) {
     	List<Study> studies = studyService.searchStudiesByKeyword(keyword);
     	model.addAttribute("studies", studies);
@@ -55,7 +54,7 @@ public class StudyController {
     }
     
     // 특정 Study에 속한 Series 목록을 전달
-    @GetMapping("/studies/{studyKey}/series")
+    @GetMapping("/studyList/{studyKey}/series")
     public String listSeries(@PathVariable("studyKey") Long studyKey, Model model) {
         List<Series> seriesList = studyService.getSeriesByStudyKey(studyKey);
         model.addAttribute("series", seriesList);
@@ -71,21 +70,21 @@ public class StudyController {
 //    }
 
     // 스터디 추가 폼 페이지
-    @GetMapping("/studies/new")
+    @GetMapping("/studyList/new")
     public String createStudyForm(Model model) {
         model.addAttribute("study", new Study());
         return "createStudy"; // 타임리프 템플릿 파일 이름 (createStudy.html)
     }
 
     // 스터디 추가/수정 처리
-    @PostMapping("/studies")
+    @PostMapping("/studyList")
     public String saveOrUpdateStudy(@ModelAttribute Study study) {
         studyService.saveStudy(study);
         return "redirect:/studies";
     }
 
     // 스터디 삭제
-    @PostMapping("/studies/{studyKey}/delete")
+    @PostMapping("/studyList/{studyKey}/delete")
     public String deleteStudy(@PathVariable Long studyKey) {
         studyService.deleteStudy(studyKey);
         return "redirect:/studies";

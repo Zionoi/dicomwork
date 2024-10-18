@@ -30,8 +30,6 @@ public class MemberService {
     }
 
     public void saveOrUpdateMember(Member member) {
-        // 비밀번호 암호화 후 저장
-        member.setPassword(passwordEncoder.encode(member.getPassword()));
         memberRepository.save(member);
     }
 
@@ -44,11 +42,10 @@ public class MemberService {
 		return memberRepository.existsById(id);	
 	}
 
-    public Optional<Member> login(Member member) {
-		return memberRepository.findById(member.getMemId());
-		
-	}
-
-  
+//    public Optional<Member> login(Member member) {
+//		return memberRepository.findById(member.getMemId());
+//		
+//	}
+// 
 
 }
