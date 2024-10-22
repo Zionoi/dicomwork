@@ -17,24 +17,6 @@ import com.study.finalProject.service.CustomUserDetailsService;
 @EnableWebSecurity
 public class SecurityConfig {
 
-//	@Autowired
-//    private final CustomUserDetailsService customUserDetailsService;
-//
-//    public SecurityConfig(CustomUserDetailsService customUserDetailsService) {
-//        this.customUserDetailsService = customUserDetailsService;
-//    }
-
-//    @Bean
-//    public AuthenticationManager authenticationManager(HttpSecurity http, PasswordEncoder passwordEncoder, CustomUserDetailsService customUserDetailsService) throws Exception {
-//        System.out.println("시큐리티 인증 customUserDetailsService:: " + http);
-//    	
-//    	return http.getSharedObject(AuthenticationManagerBuilder.class)
-//                .userDetailsService(customUserDetailsService)
-//                .passwordEncoder(passwordEncoder)
-//                .and()
-//                .build();
-//    }
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 //        http
